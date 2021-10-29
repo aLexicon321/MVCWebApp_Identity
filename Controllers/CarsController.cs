@@ -55,6 +55,7 @@ namespace MVCWebApp_Identity.Controllers
         // POST: Cars/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Administrators")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Brand,Model,Year")] Car car)
@@ -120,7 +121,7 @@ namespace MVCWebApp_Identity.Controllers
             return View(car);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrators")]
         // GET: Cars/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -139,7 +140,7 @@ namespace MVCWebApp_Identity.Controllers
             return View(car);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrators")]
         // POST: Cars/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
